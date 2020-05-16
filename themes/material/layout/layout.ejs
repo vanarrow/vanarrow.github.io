@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html style="display: none;" <% if(config.language !== null) { %>lang="<%- config.language.substring(0,2) %>"<% } %>>
+    <%- partial('_partial/head') %>
+
+    <% if(page.layout === 'gallery') { %>
+        <!-- Single Gallery Page -->
+        <%- partial('_widget/page-gallery') %>
+    <% } else { %>
+        <body id="scheme-<%= theme.scheme %>" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                <% if(theme.scheme === 'Isolation') { %>
+                    <!-- Isolation Header -->
+                    <%- partial('_partial/isolate_info') %>
+                <% } %>
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    <% if(theme.scheme === 'Paradox') { %>
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    <% } %>
+
+                    <%- body %>
+
+                    <% if(theme.scheme === 'Paradox') { %>
+                        <%- partial('_partial/sidebar') %>
+                    <% } %>
+
+                    <% if( (theme.scheme === 'Paradox') && (is_post() || is_home() || is_archive() || is_category() || (page.totop === true) ) ) { %>
+                        <!-- Footer Top Button -->
+                        <%- partial('_partial/footer_top')  %>
+                    <% } %>
+
+                    <%- partial('_partial/footer') %>
+
+                    <%- partial('_partial/import_js') %>
+                </main>
+            </div>
+        </body>
+    <% } %>
+</html>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+<!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+
+
+<!-- 点击烟花爆炸效果 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='1' zIndex="-2" count="300" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<!-- 样式一（鼠标点击更换样式） -->
+<!-- <script src="js/ribbon.min.js" type="text/javascript"></script> -->
+<!-- 样式二（飘动的彩带） -->
+<script src="js/ribbon.piao.js" type="text/javascript"></script>
